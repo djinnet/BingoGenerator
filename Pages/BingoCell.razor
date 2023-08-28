@@ -1,0 +1,15 @@
+﻿<div class="bingo-cell @(IsHighlighted ? "highlighted" : "") @(IsFreeSpace ? "free-space" : "")" @onclick="ToggleHighlight">
+    @CellContent
+</div>
+
+@code {
+    [Parameter] public string? CellContent { get; set; }
+    private bool IsHighlighted { get; set; }
+    private bool IsFreeSpace => CellContent.Equals("FREE", StringComparison.OrdinalIgnoreCase);
+
+
+    private void ToggleHighlight()
+    {
+        IsHighlighted = !IsHighlighted;
+    }
+}
