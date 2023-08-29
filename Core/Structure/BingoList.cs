@@ -68,7 +68,8 @@ public static class BingoList
         "Rob made an appearence in the video",
         "Golden ice lemur reveal",
         "Coal canary reveal",
-        "Bucket reveal"
+        "Bucket reveal",
+        "Ynku is talking about Kubikro again"
         // Add more sentences here
     };
 
