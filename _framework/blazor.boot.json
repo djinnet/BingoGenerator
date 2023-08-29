@@ -8,7 +8,7 @@
   "resources": {
     "assembly": {
       "Append.Blazor.Printing.dll": "sha256-BX6d4I1X\/uerpc5YvD6MxMvwFYcyUAHziqhSJgaX4Eo=",
-      "BingoGenerator.dll": "sha256-+Bo92MI55Zs9v5M\/dgQKtz89l21Z7DISNTJhRQF0rmE=",
+      "BingoGenerator.dll": "sha256-U8FCah5aw3aGJx+Drio13xEsWTtlUn2SHqk4L51Kn3g=",
       "Microsoft.AspNetCore.Components.dll": "sha256-y5hHQSbQpe4l3J9cSlrxAyu+zZm1HDYgIVCi6p5Ny7M=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-r0YBuWGUlaHUh2Z23twt81FC7qrTbOMZKoaD\/dgspW4=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-GthKrHcSc8uOL6XXkGQP6uGfESlsj9kHhiGlLA+w5iM=",
