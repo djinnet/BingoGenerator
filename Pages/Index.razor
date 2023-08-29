@@ -3,7 +3,16 @@
 @inject IJSRuntime Js
 
 <div class="bingo-image-container" id="bingo-image-container">
-    <img src="../Title.png" alt="Image" class="bingo-image" />
+    @if (IsDebug())
+    {
+        <img src="../Title.png" alt="Image" class="bingo-image" />
+    }
+    else
+    {
+        <img src="./Title.png" alt="Image" class="bingo-image" />
+
+    }
+
     <h1 style="color:white;">BINGO</h1>
     <div class="bingo-card">
         @for (int row = 0; row < 5; row++)
@@ -33,5 +42,14 @@
     private async Task Print()
     {
         await Js.InvokeVoidAsync("printInvoke");
+    }
+
+    public static bool IsDebug()
+    {
+#if DEBUG
+      return true;
+#else
+      return false;
+#endif
     }
 }
