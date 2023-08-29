@@ -24,7 +24,7 @@ public static class BingoList
         "Phantom reveal",
         "The fog",
         "Hello darkness my old friend",
-        "Neev steals... I mean ''borrowed'' stuff again",
+        "Neev revealed to be a dog",
         "meme reveal",
         "Balance changes",
         "Community got fooled. Well done.",
