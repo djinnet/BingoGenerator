@@ -24,7 +24,7 @@
     color: #ddd; /* Set the text color to white */
     padding: 1rem;
     width: 730px;
-    height: 750px;
+    height: 700px;
     /* Responsive adjustments */
     max-width: 100%; /* Allow the card to adapt to smaller screens */
     overflow: hidden; /* Prevent horizontal overflow */

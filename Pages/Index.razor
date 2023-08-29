@@ -2,6 +2,8 @@
 @inject BingoService BingoService
 @inject IJSRuntime Js
 
+
+
 <div class="bingo-image-container" id="bingo-image-container">
     @if (IsDebug())
     {
@@ -25,19 +27,29 @@
     </div>
 </div>
 
-<button @onclick="RegenerateCard">Regenerate Bingo Card</button>
+<div>
+    <label style="color:white;">
+        <input type="checkbox" @bind="allowDuplicates" /> Allow Duplicates
+    </label>
+    <button @onclick="RegenerateCard">
+        Regenerate Bingo Card
+    </button>
+    <button @onclick="Print">
+        Print PDF
+    </button>
+</div>
 
-<button @onclick="Print">
-    Print PDF
-</button>
+
 <br />
 <p style="color:white;">Credit to Skymill Studio &amp; BottledDucky on discord</p>
 
 @code {
+    private bool allowDuplicates = false;
+    private BingoCard? bingoCard;
 
     private void RegenerateCard()
     {
-        BingoService.GenerateBingoCard();
+        bingoCard = BingoService.GenerateBingoCard(allowDuplicates);
         StateHasChanged();
     }
 

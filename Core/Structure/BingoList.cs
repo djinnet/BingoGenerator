@@ -3,7 +3,7 @@ public static class BingoList
 {
     public static readonly string[] Sentences = new[]
     {
-        "Awburn dies",
+        "A kinfolk dies",
         "A garage",
         "Kodoki spinning right-around",
         "Andrew gets promoted to community cultivator of chaos",
@@ -31,11 +31,48 @@ public static class BingoList
         "Leeks",
         "Rickroll",
         "Krindid Faytz",
-        "Kodoki onesie"
+        "Kodoki onesie",
+        "New Active Ability reveal",
+        "New Passive Ability reveal",
+        "New Item reveal",
+        "A unknown kinfolk's type reveal",
+        "Avieon",
+        "Awburn",
+        "Embear",
+        "Galvolant",
+        "Gladias",
+        "Kahstrix",
+        "Kainite",
+        "Kubikro",
+        "Lumala",
+        "Mechid",
+        "Nyazen",
+        "Shovlet",
+        "Skulken",
+        "Bashful Strider",
+        "Hull Piercer",
+        "Salamurder",
+        "Legendary kinfolk reveal",
+        "Starter reveal",
+        "New world building reveal",
+        "Beta release date",
+        "Bees- not the bees!",
+        "Dark soul combat",
+        "Mario karts combat",
+        "Another free space?",
+        "Kinfolk equipment reveal",
+        "Crossover reveal",
+        "Players are necromancers",
+        "Players are druids",
+        "The dice hits 20",
+        "Rob made an appearence in the video",
+        "Golden ice lemur reveal",
+        "Coal canary reveal",
+        "Bucket reveal"
         // Add more sentences here
     };
 
-    private static List<string> _usedSentences = new List<string>();
+    private static readonly List<string> _usedSentences = new();
 
     public static void Clear(bool allowDuplicates)
     {
@@ -56,7 +93,7 @@ public static class BingoList
         string randomSentence;
         do
         {
-            randomSentence = Sentences[new Random().Next(Sentences.Length)];
+            randomSentence = PickRandomlySentence;
         } while (_usedSentences.Contains(randomSentence));
 
         _usedSentences.Add(randomSentence);
@@ -67,8 +104,7 @@ public static class BingoList
     {
         get
         {
-            var random = new Random();
-            return Sentences[random.Next(Sentences.Length)];
+            return Sentences[Random.Shared.Next(Sentences.Length)];
         }
     }
 }
