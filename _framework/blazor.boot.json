@@ -8,8 +8,8 @@
   "resources": {
     "assembly": {
       "Append.Blazor.Printing.dll": "sha256-BX6d4I1X\/uerpc5YvD6MxMvwFYcyUAHziqhSJgaX4Eo=",
-      "BingoGenerator.dll": "sha256-U8FCah5aw3aGJx+Drio13xEsWTtlUn2SHqk4L51Kn3g=",
-      "Microsoft.AspNetCore.Components.dll": "sha256-y5hHQSbQpe4l3J9cSlrxAyu+zZm1HDYgIVCi6p5Ny7M=",
+      "BingoGenerator.dll": "sha256-dVAzuq2bxjvfe6Fc9yMVTA2+0ZRlbMSfyktxtcjDJII=",
+      "Microsoft.AspNetCore.Components.dll": "sha256-C4acPMvQWN0yRJV36PBCP5XZkEkePlUuD59rNrgdkqI=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-r0YBuWGUlaHUh2Z23twt81FC7qrTbOMZKoaD\/dgspW4=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-GthKrHcSc8uOL6XXkGQP6uGfESlsj9kHhiGlLA+w5iM=",
       "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-X\/f4fDl2cuIRXeWHhK\/f2UqQbFioD+RU4a4CEh0zrrQ=",
@@ -29,9 +29,9 @@
       "System.Memory.dll": "sha256-KLyizTVNr5OAaObAHVC88i8JkxTnl6zkSFB0xJtwgEM=",
       "System.Net.Http.dll": "sha256-JVoxp4b342ZNm9h0NfxHvc+GkhRb7c+kfCQJAPAMMZ4=",
       "System.Net.Primitives.dll": "sha256-s+5DbwuQFwjUmtfnDXL\/Hyra3ajgNyaZg8FIuWonkQ0=",
-      "System.Private.CoreLib.dll": "sha256-OYvIya0NL7Z+hCbACsa1luKb2KFiMFeHqbMwJmBB5V0=",
+      "System.Private.CoreLib.dll": "sha256-\/ohmChoYPXAg2TKPX6BdJ73spTjVtr7FqXRP7HHj95Y=",
       "System.Private.Uri.dll": "sha256-2\/3pr1n8GAbl+BqpepL97F2sCkQbj\/SbgZSGb\/3GrJg=",
-      "System.Runtime.dll": "sha256-y3M7IwFCm738rJY6wn1mogUXfCLwWjwv+jmO5kEFzDc=",
+      "System.Runtime.dll": "sha256-FVCYZi5gXt5WbB5Y93k+tA6lgZPGoU2jG3vCGuu1bDo=",
       "System.Runtime.InteropServices.JavaScript.dll": "sha256-seKkJcV23+2CsUE55lbJKcSEDRa6WLn\/WkOcfY0GrYU=",
       "System.Text.Encodings.Web.dll": "sha256-pvIrtoRH3pg+S3DVfTeqGmYAhKqJ0nC8PEdZkYd+TCY=",
       "System.Text.Json.dll": "sha256-GWGThE6\/l9qnNB0TEn8EXsSdb1jEGbQLj4c73NzDdAk="
