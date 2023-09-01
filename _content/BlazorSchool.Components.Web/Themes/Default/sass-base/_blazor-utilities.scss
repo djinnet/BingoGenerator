@@ -1,0 +1,16 @@
+.blazor-flex-column
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.blazor-flex-row
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.grabbable
+{
+    cursor: move;
+}

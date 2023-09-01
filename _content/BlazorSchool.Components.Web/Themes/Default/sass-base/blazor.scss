@@ -1,0 +1,62 @@
+@import "source/functions";
+
+// Default variable overrides
+$enable-dark-mode: false;
+$enable-container-classes: false;
+$enable-important-utilities: false;
+$prefix: blazor-;
+
+@import "blazor-library-configuration";
+@import "source/variables";
+
+// Remove themes
+$theme-colors: map-remove($theme-colors, "light", "dark");
+
+// Required
+@import "source/maps";
+@import "source/mixins";
+@import "source/root";
+
+// Included components
+@import "source/badge";
+@import "source/buttons";
+@import "source/alert";
+@import "source/card";
+@import "blazor-vertical-carousel";
+@import "blazor-accordion";
+@import "blazor-collapse";
+
+// Included miscellaneous
+@import "blazor-utilities";
+@import "source/utilities";
+@import "source/reboot";
+@import "source/close";
+@import "source/helpers/color-bg";
+@import "source/helpers/visually-hidden";
+
+$keepingUtilities: ("background-color", "border", "border-width", "border-color", "color", "position", "top", "bottom", "start", "end", "display", "translate-middle", "rounded", "padding");
+
+@each $utility in map-keys($utilities)
+{
+    @if not index($keepingUtilities, $utility)
+    {
+        $utilities: map-remove($utilities, $utility);
+    }
+}
+
+$utilities: map-merge( $utilities, ( "background-color": map-merge( map-get($utilities, "background-color"), ( class: blazor-bg ) ) ) );
+$utilities: map-merge( $utilities, ( "border": map-merge( map-get($utilities, "border"), ( class: blazor-border ) ) ) );
+$utilities: map-merge( $utilities, ( "border-width": map-merge( map-get($utilities, "border-width"), ( class: blazor-border ) ) ) );
+$utilities: map-merge( $utilities, ( "border-color": map-merge( map-get($utilities, "border-color"), ( class: blazor-border ) ) ) );
+$utilities: map-merge( $utilities, ( "color": map-merge( map-get($utilities, "color"), ( class: blazor-text ) ) ) );
+$utilities: map-merge( $utilities, ( "position": map-merge( map-get($utilities, "position"), ( class: blazor-position ) ) ) );
+$utilities: map-merge( $utilities, ( "top": map-merge( map-get($utilities, "top"), ( class: blazor-top ) ) ) );
+$utilities: map-merge( $utilities, ( "bottom": map-merge( map-get($utilities, "bottom"), ( class: blazor-bottom ) ) ) );
+$utilities: map-merge( $utilities, ( "start": map-merge( map-get($utilities, "start"), ( class: blazor-left ) ) ) );
+$utilities: map-merge( $utilities, ( "end": map-merge( map-get($utilities, "end"), ( class: blazor-right ) ) ) );
+$utilities: map-merge( $utilities, ( "display": map-merge( map-get($utilities, "display"), ( class: blazor-display ) ) ) );
+$utilities: map-merge( $utilities, ( "translate-middle": map-merge( map-get($utilities, "translate-middle"), ( class: blazor-translate-middle ) ) ) );
+$utilities: map-merge( $utilities, ( "rounded": map-merge( map-get($utilities, "rounded"), ( class: blazor-rounded ) ) ) );
+$utilities: map-merge( $utilities, ( "padding": map-merge( map-get($utilities, "padding"), ( class: blazor-padding ) ) ) );
+
+@import "source/utilities/api";

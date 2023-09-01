@@ -1,0 +1,14 @@
+.blazor-collapse.blazor-collapse-hide
+{
+    display: flex;
+    line-height: 0;
+    opacity: 0;
+    transition: .2s ease-out;
+}
+
+.blazor-collapse.blazor-collapse-show
+{
+    display: flex;
+    justify-content: space-between;
+    transition: .2s ease-out;
+}
