@@ -1,69 +1,176 @@
 ﻿@page "/"
 @inject BingoService BingoService
 @inject IJSRuntime Js
+@inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
+@inject NavigationManager uriHelper
 
+@if (bingoCard == null)
+{
+    <h1>Loading the bingo card</h1>
+}
+else
+{
+    
+    <div class="bingo-image-container" id="bingo-image-container">
 
-
-<div class="bingo-image-container" id="bingo-image-container">
-    @if (IsDebug())
-    {
-        <img src="../Title.png" alt="Image" class="bingo-image" />
-    }
-    else
-    {
-        <img src="./Title.png" alt="Image" class="bingo-image" />
-
-    }
-
-    <h1 style="color:white;">BINGO</h1>
-    <div class="bingo-card">
-        @for (int row = 0; row < 5; row++)
+        @if (BingoService.IsDebug())
         {
-            @for (int col = 0; col < 5; col++)
-            {
-                <BingoCell CellContent="@BingoService.GetCellValue(row, col)" />
-            }
+            <img src="../Title.png" alt="Image" class="bingo-image" />
         }
+        else
+        {
+            <img src="./Title.png" alt="Image" class="bingo-image" />
+
+        }
+
+        <h1 style="color:white;">BINGO</h1>
+        <div class="@(selectedBingoVersion == EBingoVersion.FiveByFive ? "bingo-card5x5" : "bingo-card3x9")">
+
+            @for (int row = 0; row < bingoCard.Rows; row++)
+            {
+                @for (int col = 0; col < bingoCard.Columns; col++)
+                {
+                    <BingoCell CellContent="@bingoCard.GetCellValue(row, col)" />
+                }
+            }
+
+        </div>
     </div>
-</div>
+    <div>
+        <label style="color:white;">
+            <input type="checkbox" @bind="allowDuplicates" /> Allow Duplicates
+        </label>
+        <label style="color:white;">
+            <input type="checkbox" @bind="includeFreeSpace" /> Include Free Space
+        </label>
 
-<div>
-    <label style="color:white;">
-        <input type="checkbox" @bind="allowDuplicates" /> Allow Duplicates
-    </label>
-    <button @onclick="RegenerateCard">
-        Regenerate Bingo Card
-    </button>
-    <button @onclick="Print">
-        Print PDF
-    </button>
-</div>
+        <label style="color:white;">
+                Card type:
+                <br>
+                @foreach (var versionCard in (EBingoVersion[])Enum.GetValues(typeof(EBingoVersion)))
+                {
+                    @if (IsEqual(versionCard))
+                    {
+                        <input type="radio" name="@("version-" + versionCard)" id="@versionCard" value="@versionCard" style="color:white;"
+                        @onchange="OnChangeRadioSelection" checked />
+                        <text>&nbsp;</text>
+
+                        @versionCard
+                    }else{
+                        <input type="radio" name="@("version-" + versionCard)" id="@versionCard" value="@versionCard" style="color:white;"
+                        @onchange="OnChangeRadioSelection" />
+                        <text>&nbsp;</text>
+
+                        @versionCard
+                    }
+                
+
+                    <br>
+                }
+        </label>
+
+        <button @onclick="RegenerateCard">
+            Save the options & Regenerate Bingo Card
+        </button>
+        <button @onclick="Print">
+            Print PDF
+        </button>
+    </div>
+    <br />
+    <p style="color:white;">Known issues: Click on the print button may cause the deselected radio buttons. This can be fixed by refresh the page which is done automatically after 2 secs.</p>
+    <br />
+    <p style="color:white;">Credit to Skymill Studio &amp; BottledDucky on discord</p>
+}
 
 
-<br />
-<p style="color:white;">Credit to Skymill Studio &amp; BottledDucky on discord</p>
+
+
+
 
 @code {
+    private EBingoVersion selectedBingoVersion = EBingoVersion.FiveByFive;
     private bool allowDuplicates = false;
+    private bool includeFreeSpace = true;
     private BingoCard? bingoCard;
+    string RadioValue = "FiveByFive";
+
+    protected override void OnInitialized()
+    {
+        // Load options from localStorage
+        LoadOptions();
+        GenerateCard();
+    }
+
+    private void GenerateCard()
+    {
+        bingoCard = BingoService.GenerateBingoCard(allowDuplicates, includeFreeSpace, selectedBingoVersion);
+    }
 
     private void RegenerateCard()
     {
-        bingoCard = BingoService.GenerateBingoCard(allowDuplicates);
+        GenerateCard();
+        SaveOptions();
         StateHasChanged();
+    }
+
+
+    private void OnChangeRadioSelection(ChangeEventArgs args)
+    {
+        if (args == null) return;
+        if (args.Value == null) return;
+        string? value = args.Value.ToString();
+        if (string.IsNullOrEmpty(value)) return;
+        RadioValue = value;
+        Enum.TryParse(RadioValue, out selectedBingoVersion);
+        bingoCard = null;
+        GenerateCard();
+        StateHasChanged();
+    }
+
+    private bool IsEqual(EBingoVersion version)
+    {
+        return RadioValue.Equals(version.ToString(), StringComparison.OrdinalIgnoreCase);
     }
 
     private async Task Print()
     {
-        await Js.InvokeVoidAsync("printInvoke");
+        await Js.InvokeVoidAsync("printInvoke", new PayloadData(RadioValue));
+        //await Js.InvokeVoidAsync("Test");
+        var timer = new Timer(new TimerCallback(_ =>
+            {
+                uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
+            }), null, 2000, 2000);
+        
     }
 
-    public static bool IsDebug()
+    private void LoadOptions()
     {
-#if DEBUG
-      return true;
-#else
-      return false;
-#endif
+        if (bool.TryParse(localStorage.GetItem<string>("allowDuplicates"), out bool storedAllowDuplicates))
+        {
+            allowDuplicates = storedAllowDuplicates;
+        }
+
+        if (bool.TryParse(localStorage.GetItem<string>("includeFreeSpace"), out bool storedIncludeFreeSpace))
+        {
+            includeFreeSpace = storedIncludeFreeSpace;
+        }
+
+        var value = localStorage.GetItem<string>("RadioValue");
+
+        if (value != null)
+        {
+            RadioValue = value;
+            Enum.TryParse(RadioValue, out selectedBingoVersion);
+        }
+        
     }
+
+    private void SaveOptions()
+    {
+        localStorage.SetItem("allowDuplicates", allowDuplicates.ToString());
+        localStorage.SetItem("includeFreeSpace", includeFreeSpace.ToString());
+        localStorage.SetItem("RadioValue", RadioValue);
+    }
+
+    
 }

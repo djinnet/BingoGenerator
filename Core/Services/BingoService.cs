@@ -1,51 +1,95 @@
-﻿using BingoGenerator.Core.Structure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BingoGenerator.Core.Enums;
+using BingoGenerator.Core.Structure;
+using System.Drawing;
+
 
 namespace BingoGenerator.Core.Services;
 public class BingoService
 {
-    private static BingoCard? _currentCard;
-
-    public string GetCellValue(int row, int col)
+    /// <summary>
+    /// Generate Bingo card
+    /// </summary>
+    /// <param name="allowDuplicates">If the card should included duplicated</param>
+    /// <param name="IncludeFreeSpace">If the user want free space in the center of the board</param>
+    /// <param name="bingoVersion">5x5 or 9x3 - default is 5x5</param>
+    /// <returns>Nullable bingocard</returns>
+    public static BingoCard? GenerateBingoCard(bool allowDuplicates = false, bool IncludeFreeSpace = true, EBingoVersion bingoVersion = EBingoVersion.FiveByFive)
     {
-        _currentCard ??= GenerateBingoCard();
 
-        if (_currentCard.Cells is null)
-            return string.Empty;
+        switch (bingoVersion)
+        {
+            case EBingoVersion.FiveByFive:
+                {
+                    return GenerateFiveByFiveCard(allowDuplicates, IncludeFreeSpace);
+                }
 
-        return _currentCard.Cells[row, col];
+            case EBingoVersion.NineByThree:
+                {
+                    return GenerateNineByThree(allowDuplicates, IncludeFreeSpace);
+                }
+
+            default:
+                return null;
+        }
     }
 
-    public static BingoCard GenerateBingoCard(bool allowDuplicates = false)
+    private static BingoCard GenerateNineByThree(bool allowDuplicates, bool IncludeFreeSpace)
     {
-        var bingoCard = new BingoCard
+        int rows = 3;
+        int cols = 9;
+        BingoCard bingoCard = new()
         {
-            Cells = new string[5, 5]
+            Cells = new string[rows, cols]
         };
 
         // Populate cells with sentences
-        for (int row = 0; row < 5; row++)
+        for (int row = 0; row < rows; row++)
         {
-            for (int col = 0; col < 5; col++)
+            for (int col = 0; col < cols; col++)
             {
-                if (row == 2 && col == 2)
-                {
-                    bingoCard.Cells[row, col] = "FREE";
-                }
-                else
-                {
-                    string randomSentence = allowDuplicates ? BingoList.PickRandomlySentence : BingoList.GetRandomUnusedSentence();
-                    bingoCard.Cells[row, col] = randomSentence;
-                }
+                bool isFreeSpace = row == 1 && col == 4 && IncludeFreeSpace;
+
+                bingoCard.Cells[row, col] = AddTextToCell(allowDuplicates, isFreeSpace);
             }
         }
         BingoList.Clear(allowDuplicates);
 
-        _currentCard = bingoCard;
         return bingoCard;
+    }
+
+    private static BingoCard GenerateFiveByFiveCard(bool allowDuplicates, bool IncludeFreeSpace)
+    {
+        int rows = 5; 
+        int cols = 5;
+        BingoCard bingoCard = new ()
+        {
+            Cells = new string[rows, cols]
+        };
+
+        // Populate cells with sentences
+        for (int row = 0; row < rows; row++)
+        {
+            for (int col = 0; col < cols; col++)
+            {
+                bool isFreeSpace = row == 2 && col == 2 && IncludeFreeSpace;
+
+                bingoCard.Cells[row, col] = AddTextToCell(allowDuplicates, isFreeSpace);
+            }
+        }
+        BingoList.Clear(allowDuplicates);
+
+        return bingoCard;
+    }
+
+    private static string AddTextToCell(bool allowDuplicates, bool isFreeSpace)
+    {
+        if (isFreeSpace)
+        {
+           return "FREE";
+        }
+        else
+        {
+            return allowDuplicates ? BingoList.PickRandomlySentence : BingoList.GetRandomUnusedSentence();
+        }
     }
 }
