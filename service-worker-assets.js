@@ -117,7 +117,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-lsgkvZp3Ih5dpG49lLGQOpYYgAHoSxU5Y0VL9c2f3oA=",
+      "hash": "sha256-+mhpiU0JPRPOgujTaOxU0WyoKusdYfwDfLk6MB3RNF0=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -125,7 +125,7 @@
       "url": "_framework\/Append.Blazor.Printing.dll"
     },
     {
-      "hash": "sha256-nmxdqCyxHNHDB3denwwz5\/UJovxKZYx8ppoz6qMN7dA=",
+      "hash": "sha256-D3Q4B6Z7bSaEcRVhKE6KufnOFragmfjAxMvSoeJDTYI=",
       "url": "_framework\/BingoGenerator.dll"
     },
     {
@@ -737,5 +737,5 @@
       "url": "_content\/BlazorSchool.Components.Web\/Themes\/Default\/sass-base\/source\/vendor\/_rfs.scss"
     }
   ],
-  "version": "7Fnb\/Dcy"
+  "version": "1tvvAghU"
 };
