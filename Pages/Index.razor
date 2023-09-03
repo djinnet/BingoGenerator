@@ -24,6 +24,7 @@ else
         }
 
         <h1 style="color:white;">BINGO</h1>
+        <p style="color:white;">This is made for Monster Taming Direct 2023 on September 4th, 2023 at 4PM EST. Watch direct here on Ed's channel: <a href="@YT" target="_blank">Click here</a> </p>
         <div class="@(selectedBingoVersion == EBingoVersion.FiveByFive ? "bingo-card5x5" : "bingo-card3x9")">
 
             @for (int row = 0; row < bingoCard.Rows; row++)
@@ -63,8 +64,6 @@ else
 
                         @versionCard
                     }
-                
-
                     <br>
                 }
         </label>
@@ -77,9 +76,7 @@ else
         </button>
     </div>
     <div>
-        <br />
         <p style="color:white;">Known issues: Click on the print button may cause the deselected radio buttons. This is fixed by refresh the page automatically after 2 secs in the code, so you dont have to worry about it.</p>
-        <br />
         <p style="color:white;">Credit to Skymill Studio &amp; BottledDucky on discord</p>
     </div>
 }
@@ -90,6 +87,7 @@ else
     private bool includeFreeSpace = true;
     private BingoCard? bingoCard;
     string RadioValue = "FiveByFive";
+    string YT = "https://www.youtube.com/@GymLeaderEd/videos";
 
     protected override void OnInitialized()
     {
