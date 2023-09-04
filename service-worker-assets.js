@@ -1,6 +1,10 @@
 ﻿self.assetsManifest = {
   "assets": [
     {
+      "hash": "sha256-HzvUGDQL8MlvQaQuPvTz93NRpe5dL0WxwCy8iOKYF90=",
+      "url": "404.html"
+    },
+    {
       "hash": "sha256-EBWVSDT7F16p8vprIKBY38Gwf6LxKwNbOn9NEUum1ns=",
       "url": "css\/app.css"
     },
@@ -737,5 +741,5 @@
       "url": "_content\/BlazorSchool.Components.Web\/Themes\/Default\/sass-base\/source\/vendor\/_rfs.scss"
     }
   ],
-  "version": "7Of18DrX"
+  "version": "QKCeJ75X"
 };
