@@ -3,7 +3,7 @@
 </div>
 
 @code {
-    [Parameter] public string? CellContent { get; set; }
+    [Parameter] public string CellContent { get; set; } = string.Empty;
     private bool IsHighlighted { get; set; }
     private bool IsFreeSpace => CellContent.Equals("FREE", StringComparison.OrdinalIgnoreCase);
 

@@ -1,6 +1,5 @@
 ﻿using BingoGenerator.Core.Enums;
 using BingoGenerator.Core.Structure;
-using System.Drawing;
 
 
 namespace BingoGenerator.Core.Services;
@@ -59,9 +58,9 @@ public class BingoService
 
     private static BingoCard GenerateFiveByFiveCard(bool allowDuplicates, bool IncludeFreeSpace)
     {
-        int rows = 5; 
+        int rows = 5;
         int cols = 5;
-        BingoCard bingoCard = new ()
+        BingoCard bingoCard = new()
         {
             Cells = new string[rows, cols]
         };
@@ -85,7 +84,7 @@ public class BingoService
     {
         if (isFreeSpace)
         {
-           return "FREE";
+            return "FREE";
         }
         else
         {
