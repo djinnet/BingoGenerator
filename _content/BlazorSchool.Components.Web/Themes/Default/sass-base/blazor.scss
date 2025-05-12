@@ -5,6 +5,13 @@ $enable-dark-mode: false;
 $enable-container-classes: false;
 $enable-important-utilities: false;
 $prefix: blazor-;
+$primary: #7b3cc3;
+$secondary: #f29467;
+$success: #84bf76;
+$info: #17a2b8;
+$warning: #ffc857;
+$danger: #d94e67;
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 @import "blazor-library-configuration";
 @import "source/variables";
@@ -25,6 +32,7 @@ $theme-colors: map-remove($theme-colors, "light", "dark");
 @import "blazor-vertical-carousel";
 @import "blazor-accordion";
 @import "blazor-collapse";
+@import "blazor-form";
 
 // Included miscellaneous
 @import "blazor-utilities";
@@ -34,7 +42,7 @@ $theme-colors: map-remove($theme-colors, "light", "dark");
 @import "source/helpers/color-bg";
 @import "source/helpers/visually-hidden";
 
-$keepingUtilities: ("background-color", "border", "border-width", "border-color", "color", "position", "top", "bottom", "start", "end", "display", "translate-middle", "rounded", "padding");
+/*$keepingUtilities: ("background-color", "border", "border-width", "border-color", "color", "position", "top", "bottom", "start", "end", "display", "translate-middle", "rounded", "padding");
 
 @each $utility in map-keys($utilities)
 {
@@ -57,6 +65,6 @@ $utilities: map-merge( $utilities, ( "end": map-merge( map-get($utilities, "end"
 $utilities: map-merge( $utilities, ( "display": map-merge( map-get($utilities, "display"), ( class: blazor-display ) ) ) );
 $utilities: map-merge( $utilities, ( "translate-middle": map-merge( map-get($utilities, "translate-middle"), ( class: blazor-translate-middle ) ) ) );
 $utilities: map-merge( $utilities, ( "rounded": map-merge( map-get($utilities, "rounded"), ( class: blazor-rounded ) ) ) );
-$utilities: map-merge( $utilities, ( "padding": map-merge( map-get($utilities, "padding"), ( class: blazor-padding ) ) ) );
+$utilities: map-merge( $utilities, ( "padding": map-merge( map-get($utilities, "padding"), ( class: blazor-padding ) ) ) );*/
 
 @import "source/utilities/api";

@@ -1,0 +1,14 @@
+@import "source/forms/labels";
+@import "source/forms/form-text";
+@import "source/forms/form-control";
+@import "source/forms/form-select";
+@import "source/forms/form-check";
+@import "source/forms/form-range";
+@import "source/forms/floating-labels";
+@import "source/forms/input-group";
+
+.validation-message
+{
+    display: block;
+    font-size: .75rem;
+}

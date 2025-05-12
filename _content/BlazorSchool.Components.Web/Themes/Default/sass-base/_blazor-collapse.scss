@@ -1,14 +1,25 @@
 .blazor-collapse.blazor-collapse-hide
 {
-    display: flex;
-    line-height: 0;
-    opacity: 0;
-    transition: .2s ease-out;
+    transition: max-height .5s ease-out;
 }
 
 .blazor-collapse.blazor-collapse-show
 {
-    display: flex;
-    justify-content: space-between;
-    transition: .2s ease-out;
+    transition: max-height .5s ease-out;
+}
+
+.blazor-collapse-show
+{
+    display: block;
+    overflow: hidden;
+    max-height: 100vh;
+    transition: max-height 0.25s linear;
+}
+
+.blazor-collapse-hide
+{
+    display: block;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.25s linear;
 }

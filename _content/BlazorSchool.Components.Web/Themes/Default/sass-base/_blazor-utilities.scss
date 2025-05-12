@@ -14,3 +14,11 @@
 {
     cursor: move;
 }
+
+@each $color, $value in $theme-colors
+{
+    .accent-#{$color}
+    {
+        accent-color: $value;
+    }
+}

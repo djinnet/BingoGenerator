@@ -1,6 +1,3 @@
-Rules:
-1. Do not commit the source folder.
-
 How to compile SASS:
 1. Install SASS on your computer.
 2. Download the SASS source from Bootstrap and put it inside the source folder.
