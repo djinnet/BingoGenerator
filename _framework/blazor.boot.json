@@ -1,10 +1,10 @@
 {
   "mainAssemblyName": "BingoGenerator",
   "resources": {
-    "hash": "sha256-mTVBWdeLLqIaq8S5UolPucPZCqAY43IREKZdyEPa3M0=",
+    "hash": "sha256-z5UP9vlWw8GEAWAcndNRWIAAQYrUSz0tyDBfiiZy70Y=",
     "fingerprinting": {
       "Append.Blazor.Printing.bpzqz6oerb.wasm": "Append.Blazor.Printing.wasm",
-      "BingoGenerator.by3rzh3gej.wasm": "BingoGenerator.wasm",
+      "BingoGenerator.8yoecvvf4g.wasm": "BingoGenerator.wasm",
       "Blazored.LocalStorage.12n6dz54qr.wasm": "Blazored.LocalStorage.wasm",
       "BlazorSchool.Components.Web.e5k9vouhm9.wasm": "BlazorSchool.Components.Web.wasm",
       "Microsoft.AspNetCore.Components.Forms.01i40xjdf0.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
@@ -81,7 +81,7 @@
     },
     "assembly": {
       "Append.Blazor.Printing.bpzqz6oerb.wasm": "sha256-we0TcLscs7iBu6R6STrQnIrsnavht3vasOkpR4x4fFM=",
-      "BingoGenerator.by3rzh3gej.wasm": "sha256-PZxLtjMrwZ3LdQb1MJWLEHQ9oDLODxg95MVBbBNV9Zg=",
+      "BingoGenerator.8yoecvvf4g.wasm": "sha256-MHJbhphmY6iZHLIy5gwj2Fx1Q4hQD3B01V4jxir/9aA=",
       "Blazored.LocalStorage.12n6dz54qr.wasm": "sha256-OaMAAd5n7ORfyur5e3QIyEVKJ76MKIvwbg7/icnnYcU=",
       "BlazorSchool.Components.Web.e5k9vouhm9.wasm": "sha256-vjK/0XbJgD3tHn/Ch9mPVvvj/LSWoyGhriCdTvTtQJE=",
       "Microsoft.AspNetCore.Components.Forms.01i40xjdf0.wasm": "sha256-vDeXa6V4zxO3JkE0fQycqLfsWmtxd+kWPa033Ag3TCg=",
